@@ -1,0 +1,13 @@
+1. Buat database dengan nama "alhidayah"
+2. Masuk ke direktori project
+3. Gunakan command "composer install" pada terminal
+4. Lalu Jalankan command "php artisan migrate"
+5. Cek database anda apakah sudah terbuat beberapa table atau tidak cek table user juga apa ada isinya
+6. Bila tidak ada data di table user pada database gunakan "php artisan db:seed"
+7. Ini akan memberikan beberapa data default pada database termasuk username dan password nya
+8. Default akun saat setelah menggunakan seeder email : alhidayah856@gmail.com password: 20alhidayahyes13
+9. Bila ingin membuat user admin baru bisa menggunakan "php artisan make:filament-user"
+10. gunakan route "http://127.0.0.1:8000/admin/login" untuk login ke tabel admin bila sudah dihosting dan diberi domain
+akan untuk menjadi halaman login admin "smkalhidayahpuri.sch.id/admin/login"
+
+Website ini dibuat menggunakan Laravel 11,PHP 8.2 ,Tailwind , Filament, DaisyUI component
