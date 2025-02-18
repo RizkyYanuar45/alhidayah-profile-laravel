@@ -126,7 +126,7 @@
     <!-- list guru -->
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-        @forelse($author as $authors)
+        @forelse($teacher as $authors)
         <a href="{{route('front.author', $authors->slug)}}" class="card-authors">
             <div class="rounded-lg border border-[#EEF0F7] p-4 flex flex-col items-center gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
                 <div class="w-20 h-20 flex shrink-0 rounded-full overflow-hidden">
@@ -206,80 +206,27 @@
 		<div id="jurusan" class="mx-auto max-w-screen-xl py-12 px-4">
     <h1 class="text-center font-bold text-4xl mb-12">Jurusan</h1>
     <div class="flex flex-wrap gap-6 justify-center">
-        @foreach ($jurusan as $linkElearning)
+        @foreach ($jurusan as $data)
         <div id='DKV' class="card card-compact bg-base-100 w-full sm:w-80 lg:w-1/4 shadow-xl">
             <figure>
                 <img
-                    src="{{asset('assets/images/photos/DKV.jpeg')}}"
-                    alt="Desain Komunikasi Visual"
+                    src="{{Storage::url($data->image)}}"
+                    alt="{{$data->name}}"
                     class="h-32 w-full object-cover"
                 />
             </figure>
-            <div class="card-body">
-                <h2 class="card-title text-xl">DKV</h2>
-                <p>Desain Komunikasi Visual</p>
-                <div class="card-actions justify-end">
+            <div class="card-body min-h-36">
+                <h2 class="card-title text-xl">{{$data->name}}</h2>
+               
+                <div class="card-actions relative bottom-0">
                     <button 
                     class="btn hover:bg-[#FF6B18] text-[#FF6B18] hover:drop-shadow-xl hover:text-white outline bg-transparent outline-[#FF6B18] outline-1">
-                    <a href="{{$linkElearning->elearningDKV}}">E-Learning</a>
+                    <a href="{{$data->elearning}}">E-Learning</a>
                     </button>
                 </div>
             </div>
         </div>
-        <div id='MP' class="card card-compact bg-base-100 w-full sm:w-80 lg:w-1/4 shadow-xl">
-            <figure>
-                <img
-                    src="{{asset('assets/images/photos/MP.jpeg')}}"
-                    alt="Manajemen Perkantoran"
-                    class="h-32 w-full object-cover"
-                />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title text-xl">MP</h2>
-                <p>Manajemen Perkantoran</p>
-                <div class="card-actions justify-end">
-                    <button class="btn hover:bg-[#FF6B18] text-[#FF6B18] hover:drop-shadow-xl hover:text-white outline bg-transparent outline-[#FF6B18] outline-1">
-                        <a href="{{$linkElearning->elearningMP}}">E-Learning</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id='TAB' class="card card-compact bg-base-100 w-full sm:w-80 lg:w-1/4 shadow-xl">
-            <figure>
-                <img
-                    src="{{asset('assets/images/photos/TAB.jpeg')}}"
-                    alt="Teknik Alat Barat"
-                    class="h-32 w-full object-cover"
-                />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title text-xl">TAB</h2>
-                <p>Teknik Alat Berat</p>
-                <div class="card-actions justify-end">
-                    <button class="btn hover:bg-[#FF6B18] text-[#FF6B18] hover:drop-shadow-xl hover:text-white outline bg-transparent outline-[#FF6B18] outline-1">
-                    <a href="{{$linkElearning->elearningTAB}}">E-Learning</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id='TKR' class="card card-compact bg-base-100 w-full sm:w-80 lg:w-1/4 shadow-xl">
-            <figure>
-                <img
-                    src="{{asset('assets/images/photos/TKR.jpeg')}}"
-                    alt="Teknik Kendaraan Ringan"
-                    class="h-32 w-full object-cover"
-                />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title text-xl">TKR</h2>
-                <p>Teknik Kendaraan Ringan</p>
-                <div class="card-actions justify-end">
-                    <button class="btn hover:bg-[#FF6B18] text-[#FF6B18] hover:drop-shadow-xl hover:text-white outline bg-transparent outline-[#FF6B18] outline-1">
-                    <a href="{{$linkElearning->elearningTKR}}">E-Learning</a>
-                    </button>
-                </div>
-            </div>
-        </div>
+        
         @endforeach
     </div>
 </div>

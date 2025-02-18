@@ -22,16 +22,16 @@
         <h1 class="text-4xl font-bold">/</h1>
         <div class="flex gap-4 items-center">
             <div class="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden">
-                <img src="{{Storage::url($author->avatar)}}" alt="profile photo" class="w-full h-full object-cover" />
+                <img src="{{Storage::url($teacher->avatar)}}" alt="profile photo" class="w-full h-full object-cover" />
             </div>
             <div class="flex flex-col">
-                <p class="text-lg font-semibold">{{$author->name}}</p>
-                <span class="text-gray-500">{{$author->jabatan}}</span>
+                <p class="text-lg font-semibold">{{$teacher->name}}</p>
+                <span class="text-gray-500">{{$teacher->jabatan}}</span>
             </div>
         </div>
     </div>
     <div id="content-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        @forelse($author->news as $news)
+        @forelse($teacher->news as $news)
         <a href="{{route('front.details', $news->slug)}}" class="card">
             <div class="flex flex-col gap-4 p-6 transition-all duration-300 ring-1 ring-gray-200 hover:ring-2 hover:ring-[#FF6B18] rounded-lg overflow-hidden bg-white">
                 <div class="thumbnail-container h-48 relative rounded-lg overflow-hidden">

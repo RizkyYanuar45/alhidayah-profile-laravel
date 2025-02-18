@@ -8,6 +8,8 @@ use App\Models\Banner;
 use App\Models\Category;
 use Illuminate\Http\Request;
 Use App\Models\Jurusan;
+use App\Models\Teacher;
+
 
 class Frontcontroller extends Controller
 {
@@ -26,7 +28,7 @@ class Frontcontroller extends Controller
         ->take(3)
         ->get();
 
-        $author = Author::all();
+        $teacher = Teacher::all();
         $banner = Banner::where('is_active','active')
         ->where('type','promosi')
         ->inRandomOrder()
@@ -63,7 +65,7 @@ class Frontcontroller extends Controller
          ->inRandomOrder()
          ->first();
          $jurusan = Jurusan::all();
-        return view('front.index',compact('categories','articless','author','featured_articles',
+        return view('front.index',compact('categories','articless','teacher','featured_articles',
         'banner','informasi_articles','informasi_articles_featured','acara_articles','acara_articles_featured',
          'jurusan'));
 
@@ -79,13 +81,13 @@ class Frontcontroller extends Controller
         return view('front.category', compact('category','categories','banner'));
     }
 
-    public function author(Author $author){
+    public function teacher(Teacher $teacher){
       $categories = Category::all();
       $banner = Banner::where('is_active','active')
         ->where('type','promosi')
         ->inRandomOrder()
         ->first();
-      return view('front.author', compact('categories','author','banner'));
+      return view('front.author', compact('categories','teacher','banner'));
     }
 
     public function search(Request $request){
@@ -95,7 +97,7 @@ class Frontcontroller extends Controller
 
       $keyword = $request->keyword;
 
-      $articles = Article::with(['category','author'])
+      $articles = Article::with(['category','teacher'])
       ->where('name','like','%'. $keyword .'%')->paginate(6);
 
       return view('front.search',compact('articles','keyword','categories'));
@@ -130,7 +132,7 @@ class Frontcontroller extends Controller
             $square_banner_2 = $square_banner->get(1);
         }
 
-        $author_news = Article::where('author_id', $article->author_id)
+        $author_news = Article::where('teacher_id', $article->teacher_id)
         ->where('id','!=',$article->id)
         ->inRandomOrder()
         ->get();
