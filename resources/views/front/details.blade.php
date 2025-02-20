@@ -26,18 +26,18 @@
         <p class="w-fit text-[#A3A6AE] text-sm md:text-base">{{$article->created_at->format('M d,Y')}} - {{$article->category->name}}</p>
         <h1 id="Title" class="font-bold text-[32px] leading-[42px] md:text-[46px] md:leading-[60px]">{{$article->name}}</h1>
         <div class="flex flex-col md:flex-row items-center justify-center gap-[20px] md:gap-[70px]">
-<a id="Author" href="{{ $article->author ? route('front.author', $article->author->slug) : '#' }}" class="w-fit h-fit">
+<a id="Author" href="{{ $article->teacher ? route('front.author', $article->teacher->slug) : '#' }}" class="w-fit h-fit">
     <div class="flex items-center gap-3">
         <div class="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden">
-            @if($article->author && $article->author->avatar)
-                <img src="{{ Storage::url($article->author->avatar) }}" class="object-cover w-full h-full" alt="avatar">
+            @if($article->teacher && $article->teacher->avatar)
+                <img src="{{ Storage::url($article->teacher->avatar) }}" class="object-cover w-full h-full" alt="avatar">
             @else
                 <img src="{{ asset('assets/images/logos/logoalhidayah.png') }}" class="object-cover w-full h-full" alt="default avatar">
             @endif
         </div>
         <div class="flex flex-col text-center md:text-left">
-            <p class="font-semibold text-sm leading-[21px]">{{ $article->author ? $article->author->name : 'Unknown Author' }}</p>
-            <p class="text-xs leading-[18px] text-[#A3A6AE]">{{ $article->author ? $article->author->jabatan : 'Unknown Position' }}</p>
+            <p class="font-semibold text-sm leading-[21px]">{{ $article->teacher ? $article->teacher->name : 'Unknown Author' }}</p>
+            <p class="text-xs leading-[18px] text-[#A3A6AE]">{{ $article->teacher ? $article->teacher->jabatan : 'Unknown Position' }}</p>
         </div>
     </div>
 </a>

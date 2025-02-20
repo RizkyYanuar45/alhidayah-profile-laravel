@@ -5,8 +5,8 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Jurusan;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,42 +15,46 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        
         User::create([
             'name' => 'Admin',
             'email' => 'alhidayah856@gmail.com',
-            'password' => bcrypt('20alhidayahyes13'),
+            'password' => Hash::make('20alhidayahyes13'), 
         ]);
-        Jurusan::create([
-            'name'=>'Desain Komunikasi Visual (DKV)',
-            'elearning'=>'https://elearningsmkalhidayahdkv.edukati.com/',
-            'description'=>'description',
-            'image'=>'image',
-        ]);
-        Jurusan::create([
-            'name'=>'Teknik Alat Berat (TAB)',
-            'elearning'=>'https://elearningsmkalhidayahtab.edukati.com/',
-            'description'=>'description',
-            'image'=>'image',
-        ]);
-        Jurusan::create([
-            'name'=>'Manajemen Perkantoran (MP)',
-            'elearning'=>'https://elearningsmkalhidayahmp.edukati.com/',
-            'description'=>'description',
-            'image'=>'image',
-        ]);
-        Jurusan::create([
-            'name'=>'Teknik Kendaraan Ringan (TKR)',
-            'elearning'=>'https://elearningsmkalhidayahdkv.edukati.com/',
-            'description'=>'description',
-            'image'=>'image',
-        ]);
-        Category::create([
-            'name' => 'Informasi'
-        ]);
-        Category::create([
-            'name' => 'Acara'
-        ]);
+
+        
+        $jurusanData = [
+            [
+                'name' => 'Desain Komunikasi Visual (DKV)',
+                'elearning' => 'https://elearningsmkalhidayahdkv.edukati.com/',
+                'description' => 'description',
+                'image' => 'assets/images/photos/DKV.jpeg', 
+            ],
+            [
+                'name' => 'Teknik Alat Berat (TAB)',
+                'elearning' => 'https://elearningsmkalhidayahtab.edukati.com/',
+                'description' => 'description',
+                'image' => 'assets/images/photos/TAB.jpeg',
+            ],
+            [
+                'name' => 'Manajemen Perkantoran (MP)',
+                'elearning' => 'https://elearningsmkalhidayahmp.edukati.com/',
+                'description' => 'description',
+                'image' => 'assets/images/photos/MP.jpeg',
+            ],
+            [
+                'name' => 'Teknik Kendaraan Ringan (TKR)',
+                'elearning' => 'https://elearningsmkalhidayahdkv.edukati.com/',
+                'description' => 'description',
+                'image' => 'assets/images/photos/TKR.jpeg',
+            ],
+        ];
+
+        foreach ($jurusanData as $data) {
+            Jurusan::create($data);
+        }
+
+        Category::create(['name' => 'Informasi']);
+        Category::create(['name' => 'Acara']);
     }
 }

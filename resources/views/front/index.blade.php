@@ -1,6 +1,6 @@
 @extends('front.master')
 @section('content')
-	<body class="font-[Poppins] pb-[72px]">
+	<body class="font-[Poppins] pb-[72px] ">
 		<!-- nav logo search -->
 		<x-navbar/>
   
@@ -60,21 +60,53 @@
 		 <!-- visi misi -->
 		 <section id="visi-misi" class="mt-10 mx-auto px-4 max-w-screen-lg">
     <div class="flex flex-col sm:flex-row justify-center w-full gap-6">
-        <div id="visi" class="w-full sm:w-1/2 h-fit p-4 bg-gray-100 rounded-lg shadow-md">
-            <h1 class="text-xl font-bold text-center mb-4">Visi</h1>
-            <p class="text-lg text-center">
-                Menjadi SMK unggul yang melaksanakan pendidikan dari pelatihan berstandar nasional
-            </p>
-        </div>
-        <div id="misi" class="w-full sm:w-1/2 h-fit p-4 bg-gray-100 rounded-lg shadow-md">
-            <h1 class="text-xl font-bold text-center mb-4">Misi</h1>
-            <p class="text-lg">
-                1. Memberikan layanan pendidikan untuk menghasilkan tamatan yang beriman dan bertaqwa kepada Tuhan yang Maha Esa.<br>
+<details class="group [&_summary::-webkit-details-marker]:hidden w-1/2 mx-auto" close>
+    <summary
+      class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-[#FFECE1] p-4 text-gray-900"
+    >
+      <h2 class="font-medium mx-auto text-[#FF6B18]">Visi</h2>
+
+      <svg
+        class="size-5 shrink-0 transition duration-300 group-open:-rotate-180"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+
+    <p class="mt-4 px-4 leading-relaxed text-gray-700">
+    Menjadi SMK unggul yang melaksanakan pendidikan dari pelatihan berstandar nasional
+    </p>
+</details>
+<details class="group [&_summary::-webkit-details-marker]:hidden w-1/2 mx-auto" close>
+    <summary
+      class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-[#FFECE1] p-4 text-gray-900"
+    >
+      <h2 class="font-medium mx-auto text-[#FF6B18]">Misi</h2>
+
+      <svg
+        class="size-5 shrink-0 transition duration-300 group-open:-rotate-180"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+
+    <p class="mt-4 px-4 leading-relaxed text-gray-700">
+    1. Memberikan layanan pendidikan untuk menghasilkan tamatan yang beriman dan bertaqwa kepada Tuhan yang Maha Esa.<br>
                 2. Menyelenggarakan pendidikan berbasis industri sesuai dengan program keahlian.<br>
                 3. Memberikan layanan produksi dan jasa bagi masyarakat.<br>
                 4. Mengembangkan pendidikan yang berwawasan lingkungan.
-            </p>
-        </div>
+    </p>
+</details>
+       
+        
     </div>
 </section>
 
@@ -207,15 +239,15 @@
     <h1 class="text-center font-bold text-4xl mb-12">Jurusan</h1>
     <div class="flex flex-wrap gap-6 justify-center">
     @forelse ($jurusan as $data)
-    <div id='DKV' class="card card-compact bg-base-100 w-full sm:w-80 lg:w-1/4 shadow-xl">
-        <figure>
+    <div class="card card-compact  w-full sm:w-80 lg:w-1/4 shadow-xl">
+        <figure class=" max-h-32">
             <img
-                src="{{ Storage::url($data->image) }}"
+                src="{{  Str::startsWith($data->image, 'storage/') ? Storage::url($data->image) : asset($data->image) }}"
                 alt="{{ $data->name }}"
-                class="h-2/3 w-full object-cover"
+                class="h-full w-full object-cover"
             />
         </figure>
-        <div class="card-body flex flex-col justify-between h-1/3">
+        <div class="card-body flex flex-col justify-between h-36">
             <h2 class="card-title text-xl">{{ $data->name }}</h2>
             
             <div class="card-actions justify-end">

@@ -17,9 +17,10 @@
     @endforeach
 </nav>
 
-		<div class="max-w-screen-xl mx-auto flex flex-col gap-10 mt-12 px-4">
+<div class="max-w-screen-xl mx-auto flex flex-col gap-10 mt-12 px-4">
     @forelse($data as $item)
-   <h1 class="mx-auto">{{$item->name}}</h1>
+   <h1 class="mx-auto font-bold text-3xl">{{$item->name}}</h1>
+   <img src="{{ Str::startsWith($item->image, 'storage/') ? Storage::url($item->image) : asset($item->image) }}" alt="" class=" max-h-[500px] max-w-[500px] mx-auto">
    <a href="{{$item->elearning}}">
    <div class=" mx-auto bg-[#FF6B18] rounded-lg w-fit text-white p-2 hover:bg-orange-700">e-learning</div>
    </a>
