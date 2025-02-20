@@ -11,6 +11,6 @@ Route::get('/details/{article:slug}', [Frontcontroller::class,'details'])->name(
 
 Route::get('/category/{category:slug}', [Frontcontroller::class,'category'])->name('front.category');
 
-Route::get('/author/{author:slug}', [Frontcontroller::class,'teacher'])->name('front.author');
+Route::get('/author/{teacher:slug}', [Frontcontroller::class,'teacher'])->name('front.author');
 
 Route::get('/search', [Frontcontroller::class,'search'])->name('front.search');

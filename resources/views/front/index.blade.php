@@ -206,29 +206,31 @@
 		<div id="jurusan" class="mx-auto max-w-screen-xl py-12 px-4">
     <h1 class="text-center font-bold text-4xl mb-12">Jurusan</h1>
     <div class="flex flex-wrap gap-6 justify-center">
-        @foreach ($jurusan as $data)
-        <div id='DKV' class="card card-compact bg-base-100 w-full sm:w-80 lg:w-1/4 shadow-xl">
-            <figure>
-                <img
-                    src="{{Storage::url($data->image)}}"
-                    alt="{{$data->name}}"
-                    class="h-32 w-full object-cover"
-                />
-            </figure>
-            <div class="card-body min-h-36">
-                <h2 class="card-title text-xl">{{$data->name}}</h2>
-               
-                <div class="card-actions relative bottom-0">
-                    <button 
+    @forelse ($jurusan as $data)
+    <div id='DKV' class="card card-compact bg-base-100 w-full sm:w-80 lg:w-1/4 shadow-xl">
+        <figure>
+            <img
+                src="{{ Storage::url($data->image) }}"
+                alt="{{ $data->name }}"
+                class="h-2/3 w-full object-cover"
+            />
+        </figure>
+        <div class="card-body flex flex-col justify-between h-1/3">
+            <h2 class="card-title text-xl">{{ $data->name }}</h2>
+            
+            <div class="card-actions justify-end">
+                <button 
                     class="btn hover:bg-[#FF6B18] text-[#FF6B18] hover:drop-shadow-xl hover:text-white outline bg-transparent outline-[#FF6B18] outline-1">
-                    <a href="{{$data->elearning}}">E-Learning</a>
-                    </button>
-                </div>
+                    <a href="{{ $data->elearning }}">E-Learning</a>
+                </button>
             </div>
         </div>
-        
-        @endforeach
     </div>
+    @empty
+    <p class="text-center text-gray-500">Belum ada jurusan</p>
+    @endforelse
+</div>
+
 </div>
 
 		<!-- end jurusan list -->

@@ -25,6 +25,7 @@ class ArticleResource extends Resource
     protected static ?string $model = Article::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
@@ -91,7 +92,7 @@ class ArticleResource extends Resource
                 ])
         ]);
     }
-
+    
     public static function table(Table $table): Table
     {
         return $table
