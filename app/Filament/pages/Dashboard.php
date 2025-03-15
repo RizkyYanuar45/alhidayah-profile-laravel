@@ -31,6 +31,6 @@ class Dashboard extends BaseDashboard
 
     public function getTitle(): string | Htmlable
     {
-        return 'Dashboard Kustom';
+        return 'Dashboard';
     }
 }

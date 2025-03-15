@@ -102,7 +102,7 @@ class JurusanResource extends Resource
     //menonaktifkan fitur create jurusan baru
     public static function canCreate(): bool
     {
-       return false;
+       return true;
     }
   
 }
