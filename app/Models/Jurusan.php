@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Jurusan extends Model
 {
     use HasFactory;
-    protected $table = 'jurusan';
+    protected $table = 'major';
     protected $fillable = [
+        
         'name',
         'image',
         'description',

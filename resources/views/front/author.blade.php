@@ -3,19 +3,7 @@
 
 <body class="font-[Poppins] pb-[83px]">
 	<x-navbar/>
-<nav id="Category" class="max-w-[1130px] mx-auto flex flex-wrap justify-center items-center gap-4 mt-[20px] px-4">
-    <a href="{{route('front.index')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Home</span>
-    </a>
-    <a href="{{route('front.jurusan')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Jurusan</span>
-    </a>
-    @foreach($categories as $category)
-    <a href="{{route('front.category',$category->slug)}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>{{$category->name}}</span>
-    </a>
-    @endforeach
-</nav>
+<x-navlist :categories="$categories"/>
 <section id="author" class="max-w-screen-xl mx-auto flex flex-col gap-8 mt-16 px-4">
     <div id="title" class="flex items-center gap-6">
         <h1 class="text-4xl font-bold">Artikel Oleh Guru</h1>
@@ -36,7 +24,7 @@
             <div class="flex flex-col gap-4 p-6 transition-all duration-300 ring-1 ring-gray-200 hover:ring-2 hover:ring-[#FF6B18] rounded-lg overflow-hidden bg-white">
                 <div class="thumbnail-container h-48 relative rounded-lg overflow-hidden">
                     <div class="badge absolute left-4 top-4 flex p-2 bg-white rounded-full">
-                        <p class="text-xs font-bold">{{$news->category->name}}</p>
+                        <p class="text-xs text-[#FF6B18] font-bold">{{$news->category->name}}</p>
                     </div>
                     <img src="{{Storage::url($news->thumbnail)}}" alt="thumbnail photo" class="w-full h-full object-cover" />
                 </div>
@@ -74,3 +62,4 @@
 
 </body>
 
+@endsection

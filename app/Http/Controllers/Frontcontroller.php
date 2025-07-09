@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Author;
+
 use App\Models\Banner;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -13,11 +13,13 @@ use App\Models\Teacher;
 
 class Frontcontroller extends Controller
 {
+
+
     public function index(){
         $categories = Category::all();
 
         $articless = Article::with(['category'])
-        ->where('is_featured','not_featured')
+        
         ->latest()
         ->take(3)
         ->get();
@@ -38,8 +40,8 @@ class Frontcontroller extends Controller
          $informasi_articles = Article::whereHas('category', function ($query){
             $query->where('name','informasi');
          })
-         ->where('is_featured','not_featured')
-         ->latest()
+
+         ->inRandomOrder()
          ->take(6)
          ->get();
 
@@ -53,8 +55,8 @@ class Frontcontroller extends Controller
          $acara_articles = Article::whereHas('category', function ($query){
             $query->where('name','acara');
          })
-         ->where('is_featured','not_featured')
-         ->latest()
+        
+         ->inRandomOrder()
          ->take(6)
          ->get();
 

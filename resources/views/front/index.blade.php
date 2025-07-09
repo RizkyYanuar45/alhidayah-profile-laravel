@@ -6,19 +6,7 @@
   
 		<!--end nav logo search -->
 		<!-- nav list -->
-<nav id="Category" class="max-w-[1130px] mx-auto flex flex-wrap justify-center items-center gap-4 mt-[20px] px-4">
-    <a href="{{route('front.index')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Home</span>
-    </a>
-    <a href="{{route('front.jurusan')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Jurusan</span>
-    </a>
-    @foreach($categories as $category)
-    <a href="{{route('front.category',$category->slug)}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>{{$category->name}}</span>
-    </a>
-    @endforeach
-</nav>
+        <x-navlist :categories="$categories"/>
 
 		<!--end nav list -->
 		<!-- carousel -->
@@ -128,7 +116,7 @@
             <a href="{{route('front.details', $article->slug)}}" class="card-news">
                 <div class="rounded-lg ring-1 ring-[#EEF0F7] p-6 flex flex-col gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
                     <div class="thumbnail-container w-full h-48 rounded-lg flex shrink-0 overflow-hidden relative">
-                        <p class="badge-white absolute top-4 left-4 rounded-full p-2 bg-white font-bold text-xs leading-4">{{$article->category->name}}</p>
+                        <p class="text-[#FF6B18] badge-white absolute top-4 left-4 rounded-full p-2 bg-white font-bold text-xs leading-4">{{$article->category->name}}</p>
                         <img src="{{Storage::url($article->thumbnail)}}" class="object-cover w-full h-full" alt="thumbnail" />
                     </div>
                     <div class="card-info flex flex-col gap-2">
@@ -151,7 +139,7 @@
             WARGA SEKOLAH
         </p>
         <h2 class="font-bold text-2xl sm:text-3xl leading-tight mt-2">
-            Guru
+            Guru & Staff
         </h2>
     </div>
 
@@ -241,11 +229,7 @@
     @forelse ($jurusan as $data)
     <div class="card card-compact  w-full sm:w-80 lg:w-1/4 shadow-xl">
         <figure class=" max-h-32">
-            <img
-                src="{{  Str::startsWith($data->image, 'storage/') ? Storage::url($data->image) : asset($data->image) }}"
-                alt="{{ $data->name }}"
-                class="h-full w-full object-cover"
-            />
+            <img src="{{ Storage::url($data->image) }}" alt="Gambar {{ $data->name }}">
         </figure>
         <div class="card-body flex flex-col justify-between h-36">
             <h2 class="card-title text-xl">{{ $data->name }}</h2>
@@ -318,6 +302,7 @@
 		
 		
 	</body>
+    
 @endsection
 @push('after-styles')
 

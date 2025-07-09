@@ -2,19 +2,7 @@
 @section('content')
 	<body class="font-[Poppins]">
 		<x-navbar/>
-<nav id="Category" class="max-w-[1130px] mx-auto flex flex-wrap justify-center items-center gap-4 mt-[20px] px-4">
-    <a href="{{route('front.index')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Home</span>
-    </a>
-    <a href="{{route('front.jurusan')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Jurusan</span>
-    </a>
-    @foreach($categories as $category)
-    <a href="{{route('front.category',$category->slug)}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>{{$category->name}}</span>
-    </a>
-    @endforeach
-</nav>
+<x-navlist :categories="$categories"/>
 <section id="heading" class="max-w-screen-xl mx-auto flex flex-col items-center gap-8 mt-16 px-4">
     <h1 class="text-4xl font-bold leading-tight text-center">
         Daftar Artikel
@@ -46,7 +34,7 @@
             <div class="flex flex-col gap-4 p-[26px_20px] transition-all duration-300 ring-1 ring-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] rounded-[20px] overflow-hidden bg-white">
                 <div class="thumbnail-container h-[200px] relative rounded-[20px] overflow-hidden">
                     <div class="badge absolute left-5 top-5 bottom-auto right-auto flex p-[8px_18px] bg-white rounded-[50px]">
-                        <p class="text-xs leading-[18px] font-bold">{{$article->category->name}}</p>
+                        <p class="text-xs text-[#FF6B18] leading-[18px] font-bold">{{$article->category->name}}</p>
                     </div>
                     <img src="{{Storage::url($article->thumbnail)}}" alt="thumbnail photo" class="w-full h-full object-cover" />
                 </div>
@@ -64,3 +52,4 @@
 
 	</body>
 
+@endsection

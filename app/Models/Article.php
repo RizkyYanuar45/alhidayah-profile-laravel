@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class Article extends Model
 {
     use HasFactory;
-
+    protected $table = 'article';
     protected $fillable = [
         'name',
         'slug',

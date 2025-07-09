@@ -3,19 +3,7 @@
 <body class="font-[Poppins] pb-[83px]">
 	<x-navbar/>
     <!-- nav list -->
-<nav id="Category" class="max-w-[1130px] mx-auto flex flex-wrap justify-center items-center gap-4 mt-[20px] px-4">
-    <a href="{{route('front.index')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Home</span>
-    </a>
-    <a href="{{route('front.jurusan')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Jurusan</span>
-    </a>
-    @foreach($categories as $categoryNav)
-    <a href="{{route('front.category', $categoryNav->slug)}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>{{$categoryNav->name}}</span>
-    </a>
-    @endforeach
-</nav>
+<x-navlist :categories="$categories"/>
         <!-- end nav list -->
 <section id="Category-result" class="max-w-screen-xl mx-auto flex flex-col gap-8 mt-16 px-4">
     <h1 class="text-3xl md:text-4xl leading-tight font-bold text-center">
@@ -60,3 +48,4 @@
 @endif
 </body>
 
+@endsection

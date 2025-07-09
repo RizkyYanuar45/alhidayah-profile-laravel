@@ -3,29 +3,19 @@
 <body class="font-[Poppins]">
     
 <x-navbar/>
-<nav id="Category" class="max-w-[1130px] mx-auto flex flex-wrap justify-center items-center gap-4 mt-[20px] px-4">
-    <a href="{{route('front.index')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Home</span>
-    </a>
-    <a href="{{route('front.jurusan')}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>Jurusan</span>
-    </a>
-    @foreach($categories as $category)
-    <a href="{{route('front.category',$category->slug)}}" class="rounded-full p-[10px_18px] flex gap-[8px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18] text-sm sm:text-base">
-        <span>{{$category->name}}</span>
-    </a>
-    @endforeach
-</nav>
+<x-navlist :categories="$categories"/>
 
 <div class="max-w-screen-xl mx-auto flex flex-col gap-10 mt-12 px-4">
     @forelse($data as $item)
-   <h1 class="mx-auto font-bold text-3xl">{{$item->name}}</h1>
-   <img src="{{ Str::startsWith($item->image, 'storage/') ? Storage::url($item->image) : asset($item->image) }}" alt="" class=" max-h-[500px] max-w-[500px] mx-auto">
+
+   <h1 class="mx-auto font-bold text-3xl eo">{{$item->name}}</h1>
+  <img src="{{ Storage::url($item->image) }}" alt="Gambar {{ $item->name }}" class=" rounded-xl scale-90">
+
    <a href="{{$item->elearning}}">
    <div class=" mx-auto bg-[#FF6B18] rounded-lg w-fit text-white p-2 hover:bg-orange-700">e-learning</div>
    </a>
    
-        <article class="prose lg:prose-xl mx-auto">
+        <article class="prose lg:prose-xl mx-14">
             {!! $item->description !!}
         </article>
     @empty
