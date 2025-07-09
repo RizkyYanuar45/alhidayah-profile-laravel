@@ -37,12 +37,14 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'teacher' => [
         'driver' => 'session',
-        'provider' => 'teachers', 
+        'provider' => 'users',
+    ],
+
+    // TAMBAHKAN INI
+    'teacher' => [
+        'driver' => 'session',
+        'provider' => 'teachers',
     ],
     ],
 
@@ -65,14 +67,15 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+   
+    'teachers' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Teacher::class,
+    ],
     ],
 
     /*

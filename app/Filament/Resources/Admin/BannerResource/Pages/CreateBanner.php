@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Admin\BannerResource\Pages;
 
-use App\Filament\Resources\BannerResource;
+use App\Filament\Resources\Admin\BannerResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

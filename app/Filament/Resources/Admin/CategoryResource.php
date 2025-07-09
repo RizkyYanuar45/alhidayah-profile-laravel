@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Admin;
 
 use App\Filament\Resources\Admin\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;

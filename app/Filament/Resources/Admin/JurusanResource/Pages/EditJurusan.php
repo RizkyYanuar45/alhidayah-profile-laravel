@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Admin\JurusanResource\Pages;
 
-use App\Filament\Resources\JurusanResource;
+use App\Filament\Resources\Admin\JurusanResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
